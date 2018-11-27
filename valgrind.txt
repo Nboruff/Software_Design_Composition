@@ -1,0 +1,41 @@
+==374== Memcheck, a memory error detector
+==374== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==374== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==374== Command: ./assignment2
+==374== Parent PID: 4
+==374== 
+==374== error calling PR_SET_PTRACER, vgdb might block
+==374== Mismatched free() / delete / delete []
+==374==    at 0x4C2F74B: operator delete[](void*) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==374==    by 0x4018A9: Base_Array<int>::~Base_Array() (Base_Array.cpp:33)
+==374==    by 0x4018C6: Array<int>::~Array() (Array.cpp:65)
+==374==    by 0x40116C: operator= (Queue.cpp:71)
+==374==    by 0x40116C: main (driver.cpp:27)
+==374==  Address 0x5ab7260 is 0 bytes inside a block of size 4 alloc'd
+==374==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==374==    by 0x4017CE: Base_Array (Base_Array.cpp:7)
+==374==    by 0x4017CE: Queue<int>::Queue() (Array.cpp:18)
+==374==    by 0x401156: main (driver.cpp:26)
+==374== 
+==374== 
+==374== HEAP SUMMARY:
+==374==     in use at exit: 72,704 bytes in 1 blocks
+==374==   total heap usage: 30 allocs, 29 frees, 73,776 bytes allocated
+==374== 
+==374== 72,704 bytes in 1 blocks are still reachable in loss record 1 of 1
+==374==    at 0x4C2DB8F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==374==    by 0x4EC3EFF: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+==374==    by 0x40106B9: call_init.part.0 (dl-init.c:72)
+==374==    by 0x40107CA: call_init (dl-init.c:30)
+==374==    by 0x40107CA: _dl_init (dl-init.c:120)
+==374==    by 0x4000C69: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+==374== 
+==374== LEAK SUMMARY:
+==374==    definitely lost: 0 bytes in 0 blocks
+==374==    indirectly lost: 0 bytes in 0 blocks
+==374==      possibly lost: 0 bytes in 0 blocks
+==374==    still reachable: 72,704 bytes in 1 blocks
+==374==         suppressed: 0 bytes in 0 blocks
+==374== 
+==374== For counts of detected and suppressed errors, rerun with: -v
+==374== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
